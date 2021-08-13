@@ -1,0 +1,20 @@
+Package: ucbcdw
+Type: Package
+Title: Tools for Using the CDW and UCB UDAR
+Version: 0.1.0
+Author: Jake Tolbert
+Maintainer: Jake Tolbert <jaketolbert@berkeley.edu>
+Description: Misc tools for connecting the to CDW at UCB UDAR
+License: GPLv3 or later
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dbplyr,
+  dplyr,
+  magrittr,
+  DBI,
+  odbc,
+  purrr,
+  rlang,
+  stringr
+RoxygenNote: 7.1.1
