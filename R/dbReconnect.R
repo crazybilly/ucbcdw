@@ -1,4 +1,9 @@
-
+#' Is tbl a database table (or is it local)
+#'
+#' @param tblname an object name (not a string) to test
+#'
+#' @return a logical value indicating whether or not the object is a tbl_sql, ie. TRUE means it's a database tbl, as opposed to a local tbl
+#' @export
 is_db_tbl  <- function(tblname) {
 
   get(tblname) %>%
