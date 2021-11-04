@@ -62,6 +62,30 @@ dbRemakeTbl <- function(thetbl, con = cdw, assign_global = T) {
 }
 
 
+
+#' Class Is Oracle
+#'
+#' @param x an object or string (preferabbly a character string) to test to see if it's an Oracle connection
+#'
+#' @return
+#'
+class_is_oracle  <- function(x) {
+
+  if(class(x) == 'character') {
+    x  <- get(x)
+  }
+
+  the_classes  <- class(x)
+
+  any(the_classes == 'Oracle')
+
+}
+
+
+
+
+
+
 # should eventually add some sort of way to specify which connection to reconnect
 #   but is dependent on figuring out how to connect tbl_sql with their parent connection
 
@@ -80,9 +104,9 @@ dbRemakeTbl <- function(thetbl, con = cdw, assign_global = T) {
 #' @export
 dbReconnect  <- function(con = cdw, reconnect_tables = TRUE, reconnect_all_tbls_with_this_con = FALSE)  {
 
-  n_oracle_connections  <- ls() %>%
+  n_oracle_connections  <- ls(envir = .GlobalEnv) %>%
     # loops the global environment looking for
-    map_lgl(~ any(get(.x) %>% class %>% map_lgl(~ any(.x == 'Oracle')) )) %>%
+    map_lgl(class_is_oracle) %>%
     sum
 
   if(n_oracle_connections > 1 & reconnect_tables) {
