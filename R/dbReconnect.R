@@ -1,12 +1,20 @@
 #' Is tbl a database table (or is it local)
 #'
-#' @param tblname an object name (not a string) to test
+#' @param tblname an object, or a character string of an object's name, to test
 #'
-#' @return a logical value indicating whether or not the object is a tbl_sql, ie. TRUE means it's a database tbl, as opposed to a local tbl
+#' @return a logical value indicating whether or not the object is a tbl_sql, ie. TRUE means it's a database tbl, as opposed to a local tbl. If tblname is a string (as opposed the actual object itself), the function will get(tblname) and test that.
+#'
 #' @export
 is_db_tbl  <- function(tblname) {
 
-  get(tblname) %>%
+  if(any(class(tblname) == 'character')) {
+    thetbl  <- get(tblname)
+  } else {
+    thetbl  <- tblname
+  }
+
+
+  thetbl %>%
     class() %>%
     str_detect("tbl_sql") %>%
     any()
