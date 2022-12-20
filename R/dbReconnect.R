@@ -75,8 +75,6 @@ dbRemakeTbl <- function(thetbl, con = cdw, assign_global = T) {
 #'
 #' @param x an object or string (preferabbly a character string) to test to see if it's an Oracle connection
 #'
-#' @return
-#'
 class_is_oracle  <- function(x) {
 
   if(class(x) == 'character') {
@@ -97,7 +95,7 @@ class_is_oracle  <- function(x) {
 # should eventually add some sort of way to specify which connection to reconnect
 #   but is dependent on figuring out how to connect tbl_sql with their parent connection
 
-#' dbReconnect
+#' Reconnect A Database Connection
 #'
 #' @description reconnect to a database and reinitialize all the tables. NOTE: doesn't work right if you have more than one active database connection.
 #'
@@ -160,7 +158,7 @@ dbReconnect  <- function(con = cdw, reconnect_tables = TRUE, reconnect_all_tbls_
 
   # need to figure out how to match tables up with db connections when you have more than one connection
 
-  invisible(TRUE)
+  return(invisible(TRUE))
 
 }
 

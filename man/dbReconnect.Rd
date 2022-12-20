@@ -2,7 +2,7 @@
 % Please edit documentation in R/dbReconnect.R
 \name{dbReconnect}
 \alias{dbReconnect}
-\title{dbReconnect}
+\title{Reconnect A Database Connection}
 \usage{
 dbReconnect(
   con = cdw,
